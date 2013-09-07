@@ -22,4 +22,5 @@
   (->> expr
        (mapv (fn [[k v]]
                (vector k (parse-element v tree))))
+       (filter (fn [[k v]] (if (vector? v) (seq v) v)))
        (into {})))
